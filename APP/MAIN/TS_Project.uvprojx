@@ -631,10 +631,22 @@
               <FileType>1</FileType>
               <FilePath>..\..\BSW\BSW_Dio.c</FilePath>
             </File>
+            <File>
+              <FileName>BSW_BootSelect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\BSW\BSW_BootSelect.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>BSW-Cfg</GroupName>
+          <Files>
+            <File>
+              <FileName>BSW_BootSelectCfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Cfg\BSW_Cfg\BSW_BootSelectCfg.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>LIB</GroupName>

@@ -5,7 +5,6 @@
 /* System Server Includes */
 #include "Platform_Types.h"
 
-
 /* Suppress warning messages */
 #if defined(__CC_ARM)
 // Suppress warning message: extended constant initialiser used

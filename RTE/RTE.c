@@ -17,6 +17,8 @@ void RTE_Init(void)
     MCAL_GPIO_Init();
     MCAL_UART_Init();
 
+    /* Boot Select */
+    Bsw_BootSelectMainfunction();
 
     rteBswRdyFlg = TRUE; /* Init complete flag */
     __ENABLE_IRQ(); /* chip enable irq */
