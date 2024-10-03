@@ -41,17 +41,17 @@ static uint32 bootEnterAppFlag __attribute__((at(0x2001FFE0))) = ENTERED_WAY_POW
 *******************************************************************************/
 
 /**
-* Bsw_BootSelectMainfunction
+* Bsw_BootSelectInit
 *
 * @return   none
 *
 * @brief  Check whether to jump according to the app flag
 */
-void Bsw_BootSelectMainfunction(void)
+void Bsw_BootSelectInit(void)
 {
     if (bootEnterAppFlag == APP_JUMP_TO_BOOT_REQ1) {
         bootEnterAppFlag = 0;
-
+        (void)RTE_Init();
     } else {
         bootEnterAppFlag = 0;
         Bsw_BootScanAppEntry();

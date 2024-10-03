@@ -7,12 +7,20 @@
 #include "task.h"
 #include "FreeRTOS_TASK.h"
 #endif
+#ifdef BOOT_ENABLE
+#include "BSW_BootSelect.h"
+#endif
 
 int main(void)
 {
 #ifdef EASY_OS
 	uint8 Priority;
+#ifdef BOOT_ENABLE
+	(void)Bsw_BootSelectInit();
+#else
 	(void)RTE_Init();
+#endif
+
 #else
 	/* 定义一个创建信息返回值，默认为pdPASS */
 	BaseType_t xReturn = pdPASS;

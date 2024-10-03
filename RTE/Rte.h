@@ -11,7 +11,7 @@
 #include "MCAL_GPIO.h"
 #include "MCAL_UART.h"
 /* BSW */
-#include "BSW_BootSelect.h"
+
 /* APP */
 
 
