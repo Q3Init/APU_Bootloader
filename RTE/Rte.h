@@ -10,6 +10,7 @@
 /* User defined */
 #include "MCAL_GPIO.h"
 #include "MCAL_UART.h"
+#include "MCAL_DMA.h"
 /* BSW */
 
 /* APP */

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>APM32E103_MINI,EASY_OS,BOOT_ENABLE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\main;..\applications;..\..\OS\OS_Driver;..\..\OS\OS_Task;..\..\RTE;..\..\TYPES;..\..\RTE;..\..\LIB;..\..\BSW;..\..\Cfg\BSW_Cfg;..\..\MCAL;..\..\ext-driver;..\..\Cfg\MCAL_Cfg;..\..\APP;..\..\DRIVER\Chip_Driver\APM32E103VE\Library\Driver\CMSIS\Include;..\..\DRIVER\Chip_Driver\APM32E103VE\Library\Standard_Library\inc;..\..\DRIVER\Chip_Driver\APM32E103VE\User_Interface;..\..\OS\FreeRTOS\Source\include;..\..\OS\FreeRTOS\Source\portable\MemMang;..\..\OS\FreeRTOS\Source\portable\RVDS\ARM_CM3</IncludePath>
+              <IncludePath>..\main;..\applications;..\..\OS\OS_Driver;..\..\OS\OS_Task;..\..\RTE;..\..\TYPES;..\..\RTE;..\..\LIB;..\..\BSW;..\..\Cfg\BSW_Cfg;..\..\MCAL;..\..\ext-driver;..\..\Cfg\MCAL_Cfg;..\..\APP;..\..\DRIVER\Chip_Driver\APM32E103VE\Library\Driver\CMSIS\Include;..\..\DRIVER\Chip_Driver\APM32E103VE\Library\Standard_Library\inc;..\..\DRIVER\Chip_Driver\APM32E103VE\User_Interface</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -606,6 +606,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\MCAL\MCAL_UART.c</FilePath>
             </File>
+            <File>
+              <FileName>MCAL_DMA.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MCAL\MCAL_DMA.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -620,6 +625,11 @@
               <FileName>MCAL_Cfg_GPIO.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Cfg\MCAL_Cfg\MCAL_Cfg_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>MCAL_Cfg_DMA.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Cfg\MCAL_Cfg\MCAL_Cfg_DMA.c</FilePath>
             </File>
           </Files>
         </Group>

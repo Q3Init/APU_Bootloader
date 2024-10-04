@@ -4,7 +4,7 @@ const UARTSignalsCfg uartSignalsCfgTable[UART_SIGNALS_CNT] =
 {
     {
         .uart = USART1,
-		.irq_type = USART_INT_RXBNE|USART_INT_IDLE,
+		.irq_type = USART_INT_IDLE|USART_INT_TXC,
 		.irq = USART1_IRQn,
 		.preemptionPriority = 1,
 		.subPriority = 1,

@@ -3,11 +3,13 @@
 
 #include "MCAL_APM32.h"
 #include "MCAL_Cfg_UART.h"
-#include "freertos.h"
-#include "task.h"
-#include "semphr.h"
+#include "MCAL_Cfg_DMA.h"
+#include "MCAL_DMA.h"
+//#include "freertos.h"
+//#include "task.h"
+//#include "semphr.h"
 
 extern void MCAL_UART_Init(void);
-extern SemaphoreHandle_t SendMutex;
+//extern SemaphoreHandle_t SendMutex;
 
 #endif

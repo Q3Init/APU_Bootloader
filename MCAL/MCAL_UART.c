@@ -1,6 +1,6 @@
 #include "MCAL_UART.h"
 
-SemaphoreHandle_t SendMutex = NULL;
+//SemaphoreHandle_t SendMutex = NULL;
 /*!
  * @brief       Configures UART port.
  *
@@ -29,4 +29,41 @@ void MCAL_UART_Init(void)
 			(uartSignalsCfgTable+uartIndex)->preemptionPriority,(uartSignalsCfgTable+uartIndex)->subPriority);
 		}
 	}
+	
+	USART_EnableDMA(USART1,USART_DMA_TX_RX);
+}
+
+/**
+ * @brief     
+ * @param
+ * @retval      
+ */
+void USART1_IRQHandler( void )
+{
+	static int i = 0;
+    // 空闲中断
+    if ( USART_ReadStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_TXC ) != RESET )
+    {
+		DMA_Disable(DMA1_Channel4);
+		DMA_ClearStatusFlag(DMA1_FLAG_TC4);
+		USART_ClearStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_TXC );	
+	}
+    // 空闲中断
+    if ( USART_ReadStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_IDLE ) != RESET )
+    {
+        uartSignalsCfgTable[ 0 ].uart->STS;
+        uartSignalsCfgTable[ 0 ].uart->DATA;
+		
+		DMA_Disable(DMA1_Channel5);
+		
+		DMA_USART1_RxMsg.DMA_USART_Len = 512 - DMA_ReadDataNumber( DMA1_Channel5 );
+		
+		DMA_ConfigDataNumber(DMA1_Channel5,512); //设置RX通道内存宽度
+	
+		DMA1_Channel5->CHCFG |= (1<<7);
+		
+		DMA1_Channel5->CHMADDR = (uint32_t)DMA_USART1_RxMsg.DMA_USART_Buf;
+		
+		DMA_Enable(DMA1_Channel5);
+    }
 }
