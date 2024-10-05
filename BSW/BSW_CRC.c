@@ -61,7 +61,7 @@ const  uint8_t auchCRCLo[] =
 };
 
 
-uint16_t CRC16(uint8_t *puchMsg, uint16_t usDataLen)
+uint16_t CRC16(const uint8_t *puchMsg, uint16_t usDataLen)
 {
     uint8_t uchCRCHi = 0xFF ;         
     uint8_t uchCRCLo = 0xFF ;             
@@ -75,6 +75,6 @@ uint16_t CRC16(uint8_t *puchMsg, uint16_t usDataLen)
         uchCRCLo = auchCRCLo[uIndex];
     }
 
-    return (uchCRCHi << 8 | uchCRCLo); 
+    return (uchCRCHi | uchCRCLo << 8); 
 }
 

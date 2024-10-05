@@ -40,7 +40,6 @@ void MCAL_UART_Init(void)
  */
 void USART1_IRQHandler( void )
 {
-	static int i = 0;
     // ø’œ–÷–∂œ
     if ( USART_ReadStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_TXC ) != RESET )
     {

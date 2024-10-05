@@ -646,6 +646,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\BSW\BSW_BootSelect.c</FilePath>
             </File>
+            <File>
+              <FileName>BSW_CRC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\BSW\BSW_CRC.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSW_InterTp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\BSW\BSW_InterTp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -655,6 +665,11 @@
               <FileName>BSW_BootSelectCfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Cfg\BSW_Cfg\BSW_BootSelectCfg.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSW_InterTpCfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Cfg\BSW_Cfg\BSW_InterTpCfg.c</FilePath>
             </File>
           </Files>
         </Group>
