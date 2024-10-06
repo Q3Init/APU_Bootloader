@@ -200,15 +200,15 @@ static void InterTp_lRxIndication(uint8 srcModule, const uint8 *datas, uint16 le
             objPtr->fieldBytesCnt++;
             if (objPtr->fieldBytesCnt == INTER_TP_CMD_CNT) {
                 objPtr->fieldBytesCnt = 0;
-                objPtr->step = INTER_TP_WAIT_DATA;
+                objPtr->step = INTER_TP_WAIT_DLC;
             }
             break;
         case INTER_TP_WAIT_DLC:
-            objPtr->msg.datas[objPtr->fieldBytesCnt] = data;
+            objPtr->msg.dlc.buf[objPtr->fieldBytesCnt] = data;
             objPtr->fieldBytesCnt++;
             if (objPtr->fieldBytesCnt == INTER_TP_DLC_CNT) {
                 objPtr->fieldBytesCnt = 0;
-                objPtr->step = INTER_TP_WAIT_XOR;
+                objPtr->step = INTER_TP_WAIT_DATA;
             }
             break;
         case INTER_TP_WAIT_DATA:

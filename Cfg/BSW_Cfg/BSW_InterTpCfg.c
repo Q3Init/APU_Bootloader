@@ -58,7 +58,7 @@ boolean InterTp_UartTransmit(const uint8 *datas,uint16 dlc,uint8 uartIndex)
 }
 
 /**
-* InterTp_OTA_Rxindication
+* InterTp_OTA_Rxindication 
 *
 * @param pduId: rx datas
 * @param pduInfoPtr: common data info
