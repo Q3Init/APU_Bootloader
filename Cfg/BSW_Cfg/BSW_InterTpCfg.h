@@ -1,22 +1,41 @@
 #ifndef BSW_INTERTP_CFG_H_
 #define BSW_INTERTP_CFG_H_
-
+/*******************************************************************************
+**                      Includes                                              **
+*******************************************************************************/
 #include "Platform_Types.h"
+#include "ComStack_Types.h"
+/*******************************************************************************
+**                      Common Published Information                          **
+*******************************************************************************/
 
+/*******************************************************************************
+**                     Configuration options                                  **
+*******************************************************************************/
+
+/*******************************************************************************
+**                      Global Macro Definitions                              **
+*******************************************************************************/
+/* src and dest*/
 #define INTERTP_OTA 0
 #define INTERTP_UART 1
-
+/* bus type */
 #define BSW_UART0 0
-
+/* dir:Tx and Rx */
 #define INTERTP_PDU_RX 0
 #define INTERTP_PDU_TX 1
-
+/* pduId */
 #define INTERTP_RX_PDUID_ON_UART_11_DIAG_REQ 0
 #define INTERTP_TX_PDUID_ON_UART_22_DIAG_RSP 1
+/* pduId rx cnt */
 #define INTERTP_RX_PDUS_CNT 1
+/* pduId tx cnt */
 #define INTERTP_TX_PDUS_CNT 1
+/* pduId rx and tx cnt */
 #define INTERTP_PDUS_CNT (INTERTP_RX_PDUS_CNT + INTERTP_TX_PDUS_CNT)
-
+/*******************************************************************************
+**                      Global Type Definitions                               **
+*******************************************************************************/
 typedef struct 
 {
     uint8 id;
@@ -27,7 +46,21 @@ typedef struct
     uint8 destPduId;
     uint8 dir;
 }InterTpPduType;
-
+/*******************************************************************************
+**                      Global Constant Declarations                          **
+*******************************************************************************/
 extern const InterTpPduType interTpPdusCfgTable[];
+/*******************************************************************************
+**                      Global Variable Declarations                          **
+*******************************************************************************/
 
+/*******************************************************************************
+**                      Global Function Declarations                          **
+*******************************************************************************/
+extern boolean InterTp_UartTransmit(const uint8 *datas,uint16 dlc,uint8 uartIndex);
+extern void InterTp_OTA_Rxindication(uint16 pduId,const PduInfoType *pduInfoPtr);
+extern boolean InterTp_IsOTARxEnable(void);
+/*******************************************************************************
+**                      Global Inline Function Definitions                    **
+*******************************************************************************/
 #endif

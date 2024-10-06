@@ -11,7 +11,7 @@
 **                      Private Macro Definitions                             **
 *******************************************************************************/
 #define INTER_MODULES_CNT 1
-#define INTER_TP_MSG_BYTE_CNT 300
+#define INTER_TP_MSG_BYTE_CNT 16
 #define INTER_TP_HEADER_CNT 1
 #define INTER_TP_ID_CNT 1
 #define INTER_TP_CMD_CNT 1
@@ -134,7 +134,7 @@ boolean InterTp_Transmit(uint16 pduId, const uint8 *datas, uint8 cmd, uint16 len
             interTpTransmitMsgBuf[len + 5] = (uint8)(crc >> 8);
             interTpTransmitMsgBuf[len + 6] = (uint8)(crc);
             if (interTpPdusCfgTable[pduId].dest == INTERTP_UART) {
-                ret = TRUE; /* todo: Tx datas */
+                ret = InterTp_UartTransmit(interTpTransmitMsgBuf,len + 7,interTpPdusCfgTable[pduId].bus);
             }
         }
     }
@@ -164,6 +164,9 @@ static void InterTp_lRxIndication(uint8 srcModule, const uint8 *datas, uint16 le
     uint16 i;
     uint8 data;
     uint16 pduId;
+    uint8 rxDatas[512];
+    PduInfoType pdu;
+    pdu.datas = rxDatas;
     if (srcModule >= INTER_MODULES_CNT) {
         return;
     }
@@ -223,8 +226,12 @@ static void InterTp_lRxIndication(uint8 srcModule, const uint8 *datas, uint16 le
                 if (objPtr->msg.Xor.val == InterTp_CalXor(datas,len - 2)) {
                     for (pduId = 0;pduId < INTERTP_RX_PDUS_CNT;pduId++) {
                         if(interTpPdusCfgTable[pduId].id == (objPtr->msg.id.val)) {
+                            pdu.len = objPtr->msg.dlc.val;
+                            (void)memcpy(pdu.datas, objPtr->msg.datas, pdu.len);
                             if (interTpPdusCfgTable[pduId].dest == INTERTP_OTA) {
-                                /* todo:copy datas */
+                                if (InterTp_IsOTARxEnable() == TRUE) {
+                                    InterTp_OTA_Rxindication(pduId,&pdu);
+                                }
                             }
                         }
                     }
