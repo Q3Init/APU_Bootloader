@@ -23,8 +23,8 @@
 *******************************************************************************/
 const InterTpPduType interTpPdusCfgTable[INTERTP_PDUS_CNT] =
 {
-    {.id = 0x11,.bus = BSW_UART0,.src = INTERTP_UART,.dest = INTERTP_OTA,  .srcPduId = 0xFF,                                .destPduId = INTERTP_RX_PDUID_ON_UART_11_DIAG_REQ,   .dir = INTERTP_PDU_RX},
-    {.id = 0x22,.bus = BSW_UART0,.src = INTERTP_OTA, .dest = INTERTP_UART, .srcPduId = INTERTP_TX_PDUID_ON_UART_22_DIAG_RSP,.destPduId = 0xFF,                                   .dir = INTERTP_PDU_TX},
+    {.id = 0x11,.bus = BSW_UART1,.src = INTERTP_UART,.dest = INTERTP_OTA,  .srcPduId = 0xFF,                                .destPduId = INTERTP_RX_PDUID_ON_UART_11_DIAG_REQ,   .dir = INTERTP_PDU_RX},
+    {.id = 0x22,.bus = BSW_UART1,.src = INTERTP_OTA, .dest = INTERTP_UART, .srcPduId = INTERTP_TX_PDUID_ON_UART_22_DIAG_RSP,.destPduId = 0xFF,                                   .dir = INTERTP_PDU_TX},
 };
 /*******************************************************************************
 **                      Global Variable Definitions                           **
@@ -53,7 +53,17 @@ const InterTpPduType interTpPdusCfgTable[INTERTP_PDUS_CNT] =
 */
 boolean InterTp_UartTransmit(const uint8 *datas,uint16 dlc,uint8 uartIndex)
 {
-    boolean ret = FALSE;
+	boolean ret = FALSE;
+	switch( uartIndex )
+	{
+		case BSW_UART1:
+			DMA_Uart1Send(datas,dlc);
+			ret = TRUE;
+			break;
+		default:
+			break;
+	}
+	
     return ret;
 }
 
@@ -68,7 +78,7 @@ boolean InterTp_UartTransmit(const uint8 *datas,uint16 dlc,uint8 uartIndex)
 */
 void InterTp_OTA_Rxindication(uint16 pduId,const PduInfoType *pduInfoPtr)
 {
-
+	InterTp_Transmit(INTERTP_TX_PDUID_ON_UART_22_DIAG_RSP, pduInfoPtr->datas,pduInfoPtr->len );
 }
 
 /**

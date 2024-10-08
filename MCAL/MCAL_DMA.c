@@ -15,14 +15,4 @@ void MCAL_DMA_Init(void)
     }
 }
 
-void DMA_Uart1Send( uint8_t* buffer, uint16_t len )
-{
-	DMA_ConfigDataNumber(DMA1_Channel4,len); //设置TX通道内存宽度
-	
-    DMA1_Channel4->CHCFG |= (1<<7);
-	
-    DMA1_Channel4->CHMADDR = (uint32_t)buffer;
-	
-	DMA_Enable(DMA1_Channel4);
-}
 

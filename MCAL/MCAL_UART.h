@@ -10,6 +10,7 @@
 //#include "semphr.h"
 
 extern void MCAL_UART_Init(void);
+extern void DMA_Uart1Send(const uint8_t* buffer, uint16_t len );
 //extern SemaphoreHandle_t SendMutex;
 
 #endif

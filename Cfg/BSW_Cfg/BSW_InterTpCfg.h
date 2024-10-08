@@ -5,6 +5,8 @@
 *******************************************************************************/
 #include "Platform_Types.h"
 #include "ComStack_Types.h"
+#include "MCAL_UART.h"
+
 /*******************************************************************************
 **                      Common Published Information                          **
 *******************************************************************************/
@@ -20,7 +22,7 @@
 #define INTERTP_OTA 0
 #define INTERTP_UART 1
 /* bus type */
-#define BSW_UART0 0
+#define BSW_UART1 0
 /* dir:Tx and Rx */
 #define INTERTP_PDU_RX 0
 #define INTERTP_PDU_TX 1

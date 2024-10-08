@@ -1,4 +1,5 @@
 #include "MCAL_UART.h"
+#include "BSW_InterTp.h"
 
 //SemaphoreHandle_t SendMutex = NULL;
 /*!
@@ -33,6 +34,17 @@ void MCAL_UART_Init(void)
 	USART_EnableDMA(USART1,USART_DMA_TX_RX);
 }
 
+void DMA_Uart1Send(const uint8_t* buffer, uint16_t len )
+{
+	DMA_ConfigDataNumber(DMA1_Channel4,len); //设置TX通道内存宽度
+	
+    DMA1_Channel4->CHCFG |= (1<<7);
+	
+    DMA1_Channel4->CHMADDR = (uint32_t)buffer;
+	
+	DMA_Enable(DMA1_Channel4);
+}
+
 /**
  * @brief     
  * @param
@@ -62,6 +74,8 @@ void USART1_IRQHandler( void )
 		DMA1_Channel5->CHCFG |= (1<<7);
 		
 		DMA1_Channel5->CHMADDR = (uint32_t)DMA_USART1_RxMsg.DMA_USART_Buf;
+		
+		InterTp_UartRxIndication( BSW_UART1,DMA_USART1_RxMsg.DMA_USART_Buf,DMA_USART1_RxMsg.DMA_USART_Len);
 		
 		DMA_Enable(DMA1_Channel5);
     }

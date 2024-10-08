@@ -5,5 +5,5 @@
 #include "MCAL_Cfg_DMA.h"
 
 extern void MCAL_DMA_Init(void);
-extern void DMA_Uart1Send( uint8_t* buffer, uint16_t len );
+
 #endif
