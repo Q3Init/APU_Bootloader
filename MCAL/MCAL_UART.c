@@ -36,7 +36,7 @@ void MCAL_UART_Init(void)
 
 void DMA_Uart1Send(const uint8_t* buffer, uint16_t len )
 {
-	DMA_ConfigDataNumber(DMA1_Channel4,len); //ÉèÖÃTXÍ¨µÀÄÚ´æ¿í¶È
+	DMA_ConfigDataNumber(DMA1_Channel4,len); //ï¿½ï¿½ï¿½ï¿½TXÍ¨ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½
 	
     DMA1_Channel4->CHCFG |= (1<<7);
 	
@@ -52,14 +52,14 @@ void DMA_Uart1Send(const uint8_t* buffer, uint16_t len )
  */
 void USART1_IRQHandler( void )
 {
-    // ¿ÕÏÐÖÐ¶Ï
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
     if ( USART_ReadStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_TXC ) != RESET )
     {
 		DMA_Disable(DMA1_Channel4);
 		DMA_ClearStatusFlag(DMA1_FLAG_TC4);
 		USART_ClearStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_TXC );	
 	}
-    // ¿ÕÏÐÖÐ¶Ï
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
     if ( USART_ReadStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_IDLE ) != RESET )
     {
         uartSignalsCfgTable[ 0 ].uart->STS;
@@ -69,13 +69,13 @@ void USART1_IRQHandler( void )
 		
 		DMA_USART1_RxMsg.DMA_USART_Len = 512 - DMA_ReadDataNumber( DMA1_Channel5 );
 		
-		DMA_ConfigDataNumber(DMA1_Channel5,512); //ÉèÖÃRXÍ¨µÀÄÚ´æ¿í¶È
+		DMA_ConfigDataNumber(DMA1_Channel5,512); //ï¿½ï¿½ï¿½ï¿½RXÍ¨ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½
 	
 		DMA1_Channel5->CHCFG |= (1<<7);
 		
 		DMA1_Channel5->CHMADDR = (uint32_t)DMA_USART1_RxMsg.DMA_USART_Buf;
 		
-		InterTp_UartRxIndication( BSW_UART1,DMA_USART1_RxMsg.DMA_USART_Buf,DMA_USART1_RxMsg.DMA_USART_Len);
+		InterTp_UartRxIndication( BUS_UART1,DMA_USART1_RxMsg.DMA_USART_Buf,DMA_USART1_RxMsg.DMA_USART_Len);
 		
 		DMA_Enable(DMA1_Channel5);
     }

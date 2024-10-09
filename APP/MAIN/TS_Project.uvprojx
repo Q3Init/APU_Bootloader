@@ -656,6 +656,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\BSW\BSW_InterTp.c</FilePath>
             </File>
+            <File>
+              <FileName>BSW_UartIf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\BSW\BSW_UartIf.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -670,6 +675,11 @@
               <FileName>BSW_InterTpCfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Cfg\BSW_Cfg\BSW_InterTpCfg.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSW_UartIfCfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Cfg\BSW_Cfg\BSW_UartIfCfg.c</FilePath>
             </File>
           </Files>
         </Group>

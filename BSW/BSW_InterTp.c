@@ -177,7 +177,7 @@ static void InterTp_lRxIndication( uint8 srcModule, const uint8* datas, uint16 l
         return;
     }
     objPtr = ( interTpReceiveObjs + srcModule );
-    for ( i = 0; i < len; i++ )
+    for ( i = 0; i < len; i++ ) 
     {
         data = datas[ i ];
         switch ( objPtr->step )
@@ -268,6 +268,8 @@ static void InterTp_lRxIndication( uint8 srcModule, const uint8* datas, uint16 l
                 break;
         }
     }
+    objPtr->fieldBytesCnt = 0;
+    objPtr->step          = INTER_TP_WAIT_HEADER;
 }
 /**
  * InterTp_CalXor
