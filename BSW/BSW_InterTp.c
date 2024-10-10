@@ -246,6 +246,8 @@ static void InterTp_lRxIndication( uint8 srcModule, const uint8* datas, uint16 l
                         {
                             if ( interTpPdusCfgTable[ pduId ].id == ( objPtr->msg.id.val ) )
                             {
+                                pdu.id = objPtr->msg.id.val;
+                                pdu.cmd = objPtr->msg.cmd.val;
                                 pdu.len = objPtr->msg.dlc.val;
                                 (void)memcpy( pdu.datas, objPtr->msg.datas, pdu.len );
                                 if ( interTpPdusCfgTable[ pduId ].dest == INTERTP_OTA )

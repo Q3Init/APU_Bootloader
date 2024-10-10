@@ -2,6 +2,7 @@
 **                      Includes                                              **
 *******************************************************************************/
 #include "BSW_UartIfCfg.h"
+#include "MCAL_UART.h"
 /*******************************************************************************
 **                      Imported Compiler Switch Check                        **
 *******************************************************************************/
@@ -45,11 +46,11 @@
 * @param len: Data length
 * @return   none
 *
-* @brief  uartif map to uart write function
+* @brief  uartif mapping to uart write function
 */
 void UartIfCfg_Write(uint8 module, const uint8 *datas, uint16 len)
 {
-    
+    DMA_Uart1Send(datas,len);
 }
 /*******************************************************************************
 **                      Private Function Definitions                          **

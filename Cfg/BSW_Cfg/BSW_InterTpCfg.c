@@ -2,6 +2,7 @@
 **                      Includes                                              **
 *******************************************************************************/
 #include "BSW_InterTpCfg.h"
+#include "BSW_InterTp.h"
 /*******************************************************************************
 **                      Imported Compiler Switch Check                        **
 *******************************************************************************/
@@ -69,7 +70,7 @@ boolean InterTp_UartTransmit(const uint8 *datas,uint16 dlc,uint8 uartIndex)
 */
 void InterTp_OTA_Rxindication(uint16 pduId,const PduInfoType *pduInfoPtr)
 {
-
+	InterTp_Transmit(INTERTP_TX_PDUID_ON_UART_22_DIAG_RSP,pduInfoPtr->datas,pduInfoPtr->cmd,pduInfoPtr->len);
 }
 
 /**

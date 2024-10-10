@@ -4,6 +4,7 @@
 
 typedef struct {
     uint8 id;
+    uint8 cmd;
     uint8 *datas;
     uint16 len;
 } PduInfoType;

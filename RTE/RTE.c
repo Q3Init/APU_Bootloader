@@ -7,7 +7,9 @@ static volatile boolean rteBswRdyFlg = FALSE;
 void RTE_Init(void)
 {
     __DISENBLE_IRQ(); /* chip disable irq */
-
+#ifdef EASY_OS
+    SysTick_Config(SystemCoreClock / 1000);
+#endif
     /* OS Init */
 #ifdef EASY_OS
     OsEvt_Init();
@@ -16,7 +18,7 @@ void RTE_Init(void)
     /* MCAL Init */
     MCAL_GPIO_Init();
     MCAL_UART_Init();
-	MCAL_DMA_Init();
+    MCAL_DMA_Init();
     /* BSW Init */
     UartIf_Init();
     InterTp_Init();
