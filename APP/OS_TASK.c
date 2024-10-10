@@ -1,10 +1,11 @@
 #include "OS_TASK.h"
 /* User define */
+#include "BSW_UartIf.h"
 
 OS_LOCAL uint8 Os_TaskHdl_Lv0_Task0(void)
 {
     uint8 ret = OS_RET_OK;
-
+    UartIf_MainFunction();
     return ret;
 }
 
