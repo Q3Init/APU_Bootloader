@@ -1,7 +1,7 @@
 #include "MCAL_Cfg_DMA.h"
 
 USART_BuffMsg_t DMA_USART1_RxMsg;
-USART_BuffMsg_t DMA_USART1_TxMsg;
+USART_BuffMsg_t DMA_USART1_TxMsg = {{11,22},0};
 
 const DMASignalsCfg dmaSignalsCfgTable[DMA_SIGNALS_CNT] =
 {
@@ -12,7 +12,7 @@ const DMASignalsCfg dmaSignalsCfgTable[DMA_SIGNALS_CNT] =
             .peripheralBaseAddr = USART1_DR_ADDRESS,
             .memoryBaseAddr = (uint32)DMA_USART1_TxMsg.DMA_USART_Buf,
             .dir = DMA_DIR_PERIPHERAL_DST,
-            .bufferSize = 512,
+            .bufferSize = 0,
             .peripheralInc = DMA_PERIPHERAL_INC_DISABLE,
             .memoryInc = DMA_MEMORY_INC_ENABLE,
             .peripheralDataSize = DMA_PERIPHERAL_DATA_SIZE_BYTE,

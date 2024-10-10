@@ -11,8 +11,11 @@ void MCAL_DMA_Init(void)
         DMA_Config((dmaSignalsCfgTable + dmaIndex)->channel, (DMA_Config_T*)&((dmaSignalsCfgTable + dmaIndex)->mcal_config_dma));
 
         /* Enable DMA */
-        DMA_Enable((dmaSignalsCfgTable + dmaIndex)->channel);
+//        DMA_Enable((dmaSignalsCfgTable + dmaIndex)->channel);
     }
+	
+	DMA_Disable(DMA1_Channel4); // Tx
+	DMA_Enable(DMA1_Channel5);  // Rx
 }
 
 
