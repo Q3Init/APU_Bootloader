@@ -12,7 +12,8 @@
 #include "MCAL_UART.h"
 #include "MCAL_DMA.h"
 /* BSW */
-
+#include "BSW_UartIf.h"
+#include "BSW_InterTp.h"
 /* APP */
 
 

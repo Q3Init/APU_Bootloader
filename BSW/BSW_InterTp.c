@@ -66,13 +66,13 @@ static boolean               InterTpNetRspReceived = FALSE;
 *******************************************************************************/
 
 /**
- * BSW_InterTp_Init
+ * InterTp_Init
  *
  * @return   none
  *
  * @brief  Intertp initialize
  */
-void BSW_InterTp_Init( void )
+void InterTp_Init( void )
 {
     (void)memset( interTpReceiveObjs, 0, sizeof( interTpReceiveObjs ) );
     (void)memset( interTpTransmitMsgBuf, 0, sizeof( interTpTransmitMsgBuf ) );

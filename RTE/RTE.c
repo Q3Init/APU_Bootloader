@@ -17,6 +17,10 @@ void RTE_Init(void)
     MCAL_GPIO_Init();
     MCAL_UART_Init();
 	MCAL_DMA_Init();
+    /* BSW Init */
+    UartIf_Init();
+    InterTp_Init();
+
     rteBswRdyFlg = TRUE; /* Init complete flag */
     __ENABLE_IRQ(); /* chip enable irq */
 }
