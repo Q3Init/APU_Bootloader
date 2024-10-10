@@ -268,8 +268,6 @@ static void InterTp_lRxIndication( uint8 srcModule, const uint8* datas, uint16 l
                 break;
         }
     }
-    objPtr->fieldBytesCnt = 0;
-    objPtr->step          = INTER_TP_WAIT_HEADER;
 }
 /**
  * InterTp_CalXor
