@@ -106,6 +106,7 @@ void InterTp_UartTxConfirmation( void )
     if ( InterTpNetRspReceived == TRUE )
     {
         InterTpNetRspReceived = FALSE;
+        PduR_TxConfirmation();
     }
 }
 
@@ -124,7 +125,7 @@ boolean InterTp_Transmit( uint16 pduId, const uint8* datas, uint8 cmd, uint16 le
     uint16  crc = 0;
     if ( ( pduId < INTERTP_PDUS_CNT ) && ( interTpPdusCfgTable[ pduId ].dir == INTERTP_PDU_TX ) )
     {
-        if ( interTpPdusCfgTable[ pduId ].src == INTERTP_OTA )
+        if ( interTpPdusCfgTable[ pduId ].src == INTERTP_PDUR )
         {
             interTpTransmitMsgBuf[ 0 ] = INTER_TP_HEADER;
             interTpTransmitMsgBuf[ 1 ] = interTpPdusCfgTable[ pduId ].id;
@@ -143,7 +144,7 @@ boolean InterTp_Transmit( uint16 pduId, const uint8* datas, uint8 cmd, uint16 le
     }
     if ( ret == TRUE )
     {
-        if ( interTpPdusCfgTable[ pduId ].src == INTERTP_OTA )
+        if ( interTpPdusCfgTable[ pduId ].src == INTERTP_PDUR )
         {
             InterTpNetRspReceived = TRUE;
         }
@@ -250,11 +251,11 @@ static void InterTp_lRxIndication( uint8 srcModule, const uint8* datas, uint16 l
                                 pdu.cmd = objPtr->msg.cmd.val;
                                 pdu.len = objPtr->msg.dlc.val;
                                 (void)memcpy( pdu.datas, objPtr->msg.datas, pdu.len );
-                                if ( interTpPdusCfgTable[ pduId ].dest == INTERTP_OTA )
+                                if ( interTpPdusCfgTable[ pduId ].dest == INTERTP_PDUR )
                                 {
-                                    if ( InterTp_IsOTARxEnable( ) == TRUE )
+                                    if ( InterTp_IsRxEnable( ) == TRUE )
                                     {
-                                        InterTp_OTA_Rxindication( pduId, &pdu );
+                                        PduR_RxIndication( interTpPdusCfgTable[pduId].destPduId, &pdu );
                                     }
                                 }
                             }

@@ -2,6 +2,16 @@
 #include "Os_EvtHdl.h"
 #include "Os_TimerHdl.h"
 #include "Os_TaskHdl_Lv0.h"
+/* User defined */
+#include "MCAL_GPIO.h"
+#include "MCAL_UART.h"
+#include "MCAL_DMA.h"
+/* BSW */
+#include "BSW_UartIf.h"
+#include "BSW_InterTp.h"
+#include "BSW_PduR.h"
+#include "BSW_Iap.h"
+/* APP */
 
 static volatile boolean rteBswRdyFlg = FALSE;
 void RTE_Init(void)
@@ -22,6 +32,7 @@ void RTE_Init(void)
     /* BSW Init */
     UartIf_Init();
     InterTp_Init();
+    Iap_Init();
 
     rteBswRdyFlg = TRUE; /* Init complete flag */
     __ENABLE_IRQ(); /* chip enable irq */

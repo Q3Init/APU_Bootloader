@@ -1,11 +1,13 @@
 #include "OS_TASK.h"
 /* User define */
 #include "BSW_UartIf.h"
+#include "BSW_Iap.h"
 
 OS_LOCAL uint8 Os_TaskHdl_Lv0_Task0(void)
 {
     uint8 ret = OS_RET_OK;
     UartIf_MainFunction();
+    Iap_MainFunction();
     return ret;
 }
 

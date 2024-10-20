@@ -62,6 +62,7 @@ void USART1_IRQHandler( void )
         DMA_Disable( DMA1_Channel4 );
         DMA_ClearStatusFlag( DMA1_FLAG_TC4 );
         USART_ClearStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_TXC );
+        UartIf_TxConfirmation();
     }
     // �����ж�
     if ( USART_ReadStatusFlag( uartSignalsCfgTable[ 0 ].uart, USART_FLAG_IDLE ) != RESET )

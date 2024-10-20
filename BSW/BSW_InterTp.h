@@ -6,6 +6,7 @@
 #include "Platform_Types.h"
 #include "BSW_InterTpCfg.h"
 #include "BSW_CRC.h"
+#include "BSW_PduR.h"
 /*******************************************************************************
 **                      Common Published Information                          **
 *******************************************************************************/

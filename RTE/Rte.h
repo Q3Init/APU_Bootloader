@@ -7,15 +7,6 @@
 #include "Os_TaskHdl_Lv0.h"
 #include "Os_TaskHdl_Lv1.h"
 #include "Os_TaskHdl_Lv2.h"
-/* User defined */
-#include "MCAL_GPIO.h"
-#include "MCAL_UART.h"
-#include "MCAL_DMA.h"
-/* BSW */
-#include "BSW_UartIf.h"
-#include "BSW_InterTp.h"
-/* APP */
-
 
 #define __DISENBLE_IRQ() __disable_irq()
 #define __ENABLE_IRQ() __enable_irq()

@@ -661,6 +661,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\BSW\BSW_UartIf.c</FilePath>
             </File>
+            <File>
+              <FileName>BSW_Iap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\BSW\BSW_Iap.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSW_PduR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\BSW\BSW_PduR.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -680,6 +690,16 @@
               <FileName>BSW_UartIfCfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Cfg\BSW_Cfg\BSW_UartIfCfg.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSW_IapCfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Cfg\BSW_Cfg\BSW_IapCfg.c</FilePath>
+            </File>
+            <File>
+              <FileName>BSW_PduRCfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Cfg\BSW_Cfg\BSW_PduRCfg.c</FilePath>
             </File>
           </Files>
         </Group>
